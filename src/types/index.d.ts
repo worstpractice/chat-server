@@ -1,4 +1,4 @@
-declare module Inbox {
+declare namespace Inbox {
   export interface Message {
     text: string;
     author: string;
