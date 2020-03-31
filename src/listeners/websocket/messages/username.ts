@@ -1,5 +1,3 @@
-import { Outbox } from "../../../typings/declarations";
-
 const acceptUsernameMessage: Outbox.Username = {
   isUsernameAccepted: true,
 };

@@ -1,7 +1,7 @@
 import * as crypto from "crypto";
 import http from "http";
 import WebSocket from "ws";
-import { wss } from "../../app.js";
+import { wss } from "../../index.js";
 import { nay } from "../../utils/nay.js";
 import { say } from "../../utils/say.js";
 import { yay } from "../../utils/yay.js";
