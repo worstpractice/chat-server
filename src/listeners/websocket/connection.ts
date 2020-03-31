@@ -30,13 +30,15 @@ function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void 
     }
 
     if ("username" in deserializedMessage) {
+      say(`Message is a username request...`)
       for (let client of wss.clients) {
-        if (Object.is(client, ws)) {
-          return client.send(JSON.stringify(acceptUsernameMessage));
-        } else {
-          return client.send(JSON.stringify(rejectUsernameMessage));
+        if (Object.is(ws, client)) {
+          yay(`Username accepted!`)
+          return ws.send(JSON.stringify(acceptUsernameMessage)); // This doesn't really compare for taken usernames, just if the client is a client -- which will always be the case.
         }
       }
+      nay(`WebSocket was not in the list of clients! How can this BE?!`) // Your outrage is justified. This can never happen.
+      return ws.send(JSON.stringify(rejectUsernameMessage)); // As such, this naming decision doesn't even belong here.
     }
 
     crypto.randomBytes(8, function generateUserUUID(error, buffer) {
