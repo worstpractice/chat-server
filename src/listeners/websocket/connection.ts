@@ -3,11 +3,11 @@ import http from "http";
 import WebSocket from "ws";
 import { wss } from "../../index.js";
 import { nay } from "../../utils/nay.js";
-import { say } from "../../utils/say.js";
-import { yay } from "../../utils/yay.js";
-
-import { acceptUsernameMessage, rejectUsernameMessage } from "./messages/username.js";
 import { rethrow } from "../../utils/rethrow.js";
+import { say } from "../../utils/say.js";
+import { isUsername, isChat } from "../../utils/typeguards.js";
+import { yay } from "../../utils/yay.js";
+import { acceptUsernameMessage, rejectUsernameMessage } from "./messages/username.js";
 
 function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void {
   yay(`New client connected!`);
@@ -20,16 +20,16 @@ function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void 
   ws.on(`message`, function onClientMessage(this: WebSocket, data: WebSocket.Data): void {
     yay(`Client message recieved!`);
     say(`Data: ${data}`);
-    let serializedMessage: string;
-    let deserializedMessage: any;
+    let serialized: string;
+    let deserialized: any;
 
     try {
-      deserializedMessage = JSON.parse(data.toString());
+      deserialized = JSON.parse(data.toString());
     } catch (error) {
       error instanceof SyntaxError ? nay(`Deserialization failed!`) : rethrow(error);
     }
 
-    if ("username" in deserializedMessage) {
+    if (isUsername(deserialized)) {
       say(`Message is a username request...`);
       for (let client of wss.clients) {
         if (Object.is(ws, client)) {
@@ -39,24 +39,24 @@ function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void 
       }
       nay(`WebSocket was not in the list of clients! How can this BE?!`); // Your outrage is justified. This can never happen.
       return ws.send(JSON.stringify(rejectUsernameMessage)); // As such, this naming decision doesn't even belong here.
+    } else if (isChat(deserialized)) {
+      crypto.randomBytes(8, function generateUserUUID(error, buffer) {
+        if (error) throw error;
+        if (buffer) {
+          deserialized.UUID = buffer.toString("hex");
+          try {
+            serialized = JSON.stringify(deserialized);
+          } catch (error) {
+            error instanceof SyntaxError ? nay(`Serialization failed!`) : rethrow(error);
+          }
+          for (let client of wss.clients) {
+            client.send(serialized);
+          }
+        }
+        yay(`Broadcasting client message...`);
+        say(`Data: ${serialized}`);
+      });
     }
-
-    crypto.randomBytes(8, function generateUserUUID(error, buffer) {
-      if (error) throw error;
-      if (buffer) {
-        deserializedMessage.UUID = buffer.toString("hex");
-        try {
-          serializedMessage = JSON.stringify(deserializedMessage);
-        } catch (error) {
-          error instanceof SyntaxError ? nay(`Serialization failed!`) : rethrow(error);
-        }
-        for (let client of wss.clients) {
-          client.send(serializedMessage);
-        }
-      }
-      yay(`Broadcasting client message...`);
-      say(`Data: ${serializedMessage}`);
-    });
   });
 
   ws.on(`close`, function onClientClose(this: WebSocket, code: number, reason: string): void {

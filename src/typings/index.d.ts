@@ -1,5 +1,5 @@
 declare namespace Inbox {
-  export interface Message {
+  export interface ChatMessage {
     text: string;
     author: string;
   }
@@ -7,10 +7,12 @@ declare namespace Inbox {
   export interface Username {
     username: string;
   }
+
+  export type Message = ChatMessage | Username;
 }
 
 declare namespace Outbox {
-  export interface Message {
+  export interface ChatMessage {
     text: string;
     author: string;
     UUID: string;
@@ -19,4 +21,6 @@ declare namespace Outbox {
   export interface Username {
     isUsernameAccepted: boolean;
   }
+
+  export type Message = ChatMessage | Username;
 }
