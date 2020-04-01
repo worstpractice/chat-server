@@ -7,6 +7,7 @@ import { say } from "../../utils/say.js";
 import { yay } from "../../utils/yay.js";
 
 import { acceptUsernameMessage, rejectUsernameMessage } from "./messages/username.js";
+import { rethrow } from "../../utils/rethrow.js";
 
 function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void {
   yay(`New client connected!`);
@@ -25,19 +26,18 @@ function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void 
     try {
       deserializedMessage = JSON.parse(data.toString());
     } catch (error) {
-      nay(`Deserialization failed!`);
-      console.warn(error);
+      error instanceof SyntaxError ? nay(`Deserialization failed!`) : rethrow(error);
     }
 
     if ("username" in deserializedMessage) {
-      say(`Message is a username request...`)
+      say(`Message is a username request...`);
       for (let client of wss.clients) {
         if (Object.is(ws, client)) {
-          yay(`Username accepted!`)
+          yay(`Username accepted!`);
           return ws.send(JSON.stringify(acceptUsernameMessage)); // This doesn't really compare for taken usernames, just if the client is a client -- which will always be the case.
         }
       }
-      nay(`WebSocket was not in the list of clients! How can this BE?!`) // Your outrage is justified. This can never happen.
+      nay(`WebSocket was not in the list of clients! How can this BE?!`); // Your outrage is justified. This can never happen.
       return ws.send(JSON.stringify(rejectUsernameMessage)); // As such, this naming decision doesn't even belong here.
     }
 
@@ -48,8 +48,7 @@ function handleWebSocketConnection(this: WebSocket.Server, ws: WebSocket): void 
         try {
           serializedMessage = JSON.stringify(deserializedMessage);
         } catch (error) {
-          nay(`Serialization failed!`);
-          console.error(error);
+          error instanceof SyntaxError ? nay(`Serialization failed!`) : rethrow(error);
         }
         for (let client of wss.clients) {
           client.send(serializedMessage);
