@@ -1,5 +1,6 @@
+
 const isInboxChatMessage = (message: Inbox.Message): message is Inbox.ChatMessage => {
-  return `text` in message;
+  return `text` in message && !(`UUID` in message);
 };
 
 const isInboxUsername = (message: Inbox.Message): message is Inbox.Username => {
@@ -14,4 +15,12 @@ const isOutboxUsername = (message: Outbox.Message): message is Outbox.Username =
   return `isUsernameAccepted` in message;
 };
 
-export { isInboxChatMessage, isInboxUsername, isOutboxChatMessage, isOutboxUsername };
+const isError = (suspect: unknown): suspect is Error => {
+  return Object.is(suspect, Error);
+};
+
+const isErrorKind = (suspect: unknown): suspect is InstanceType<typeof Error> => {
+  return Object.is(Object.getPrototypeOf(suspect), Error);
+};
+
+export { isInboxChatMessage, isInboxUsername, isOutboxChatMessage, isOutboxUsername, isErrorKind, isError };
