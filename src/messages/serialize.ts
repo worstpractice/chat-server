@@ -6,7 +6,7 @@ const serialize = (message: Outbox.Message): string | never => {
   try {
     serialized = JSON.stringify(message);
   } catch (error) {
-    error instanceof SyntaxError ? nay(`Serialization failed!`) : rethrow(error);
+    error instanceof TypeError ? nay(`Serialization failed!`) : rethrow(error);
   } finally {
     return serialized as string;
   }
