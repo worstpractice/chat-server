@@ -13,15 +13,14 @@ function handleClientMessage(this: WebSocket, data: WebSocket.Data): void {
   yay(`Client message recieved!`);
   say(`Data: ${data}`);
   const message = deserialize(data);
-  
+
   if (isInboxUsername(message)) {
-    const { username } = message;
-    if (takenUsernames.has(username)) {
-      nay(`Username ${username} rejected!`);
+    if (takenUsernames.has(message.username)) {
+      nay(`Username ${message.username} rejected!`);
       return this.send(serialize(rejectUsername));
     }
-    yay(`Username ${username} accepted!`);
-    takenUsernames.add(username);
+    yay(`Username ${message.username} accepted!`);
+    takenUsernames.add(message.username);
     return this.send(serialize(acceptUsername));
   }
 
