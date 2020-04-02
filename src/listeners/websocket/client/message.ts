@@ -1,13 +1,13 @@
 import WebSocket from "ws";
 import { broadcast } from "../../../messages/broadcast.js";
-import { acceptUsername, rejectUsername } from "../../../messages/username.js";
-import { deserialize } from "../../../utils/deserialize.js";
+import { deserialize } from "../../../messages/deserialize.js";
+import { acceptUsername, rejectUsername } from "../../../messages/response.js";
+import { serialize } from "../../../messages/serialize.js";
+import { nay } from "../../../utils/nay.js";
 import { say } from "../../../utils/say.js";
-import { serialize } from "../../../utils/serialize.js";
 import { isInboxChatMessage, isInboxUsername } from "../../../utils/typePredicates.js";
 import { yay } from "../../../utils/yay.js";
 import { takenUsernames } from "./metadata/takenUsernames.js";
-import { nay } from "../../../utils/nay.js";
 
 function handleClientMessage(this: WebSocket, data: WebSocket.Data): void {
   yay(`Client message recieved!`);

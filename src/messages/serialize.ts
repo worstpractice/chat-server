@@ -1,5 +1,5 @@
-import { nay } from "./nay.js";
-import { rethrow } from "./rethrow.js";
+import { nay } from "../utils/nay.js";
+import { rethrow } from "../utils/rethrow.js";
 
 const serialize = (message: Outbox.Message): string | never => {
   let serialized;

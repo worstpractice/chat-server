@@ -1,8 +1,8 @@
 import { randomBytes } from "crypto";
 import { wss } from "../app.js";
 import { say } from "../utils/say.js";
-import { serialize } from "../utils/serialize.js";
 import { yay } from "../utils/yay.js";
+import { serialize } from "./serialize.js";
 import { stamp } from "./stamp.js";
 
 const broadcast = (message: Inbox.ChatMessage): void => {
