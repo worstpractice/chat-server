@@ -6,4 +6,3 @@ function handleHTTPListening(this: http.Server): void {
 }
 
 export { handleHTTPListening };
-
