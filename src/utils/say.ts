@@ -1,8 +1,13 @@
-/** Convenience function for general console-logging, as indicated by the "[*]" symbol. */
-function say(...args: any[]): void {
-  for (let text of args) {
-    console.log(` [*] ${text.toString()}\n`);
-  }
-}
+import { log } from "./console";
+
+const style = [
+  `font-weight: bold`,
+  `font-size: 1em`
+].join(`;`);
+
+/** Convenience function for console-logging in general, as indicated by the white text and "[*]" symbol. */
+const say = (text: string) => {
+  log(`%c[*] ${text}`, style);
+};
 
 export { say };
