@@ -20,6 +20,7 @@ import { say } from "./utils/say.js";
 const PRIORITY = os.constants.priority.PRIORITY_HIGHEST;
 const PORT = 443;
 
+console.clear();
 displayBanner();
 
 // Node /////////////////////////////////////////////////

@@ -2,12 +2,13 @@
   "name": "chat-server",
   "version": "1.0.0",
   "description": "A tiny WebSocket-powered chat server, written in TypeScript.",
-  "main": "index.js",
-  "keywords": [],
   "author": "SaltErik",
   "license": "MIT",
   "type": "module",
   "private": true,
+  "scripts": {
+    "start" : "npx tsc && node --use-strict ./dist/app.js"
+  },
   "dependencies": {
     "@types/node": "^13.9.5",
     "@types/ws": "^7.2.3",
