@@ -1,7 +1,9 @@
+import { log } from "console";
+
 /** Convenience function for console-logging successes, as indicated by the "[+]" symbol. */
 function yay(...args: any[]): void {
   for (let text of args) {
-    console.log(` [+] ${text.toString()}\n`);
+    log(` [+] ${text.toString()}\n`);
   }
 }
 

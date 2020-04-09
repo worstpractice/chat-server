@@ -1,3 +1,5 @@
+import { clear, log } from "console";
+
 const subtitles = {
   toServeAndConnect: `\n                              'TO SERVE AND CONNECT'`,
   sockItToMe: `\n                                   'SOCK-ET TO ME!'`,
@@ -17,8 +19,8 @@ const banner = `
 ${selectRandomSubtitle()}\n`;
 
 const displayBanner = (): void => {
-  console.clear();
-  console.log(banner);
+  clear();
+  log(banner);
 };
 
 export { displayBanner };
