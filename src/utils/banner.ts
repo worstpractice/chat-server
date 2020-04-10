@@ -1,9 +1,11 @@
 import { clear, log } from "console";
 import { ASCII } from "./font.js";
 
+const alignment = `                                            `;
+
 const subtitles = {
-  toServeAndConnect: `\n                              'TO SERVE AND CONNECT'`,
-  sockItToMe: `\n                                   'SOCK-ET TO ME!'`,
+  toServeAndConnect: `\n${alignment}'TO SERVE AND CONNECT'`,
+  sockItToMe: `\n${alignment}'SOCK-ET TO ME!'`,
 };
 
 const selectRandomSubtitle = (): string => {
