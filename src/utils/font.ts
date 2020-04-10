@@ -79,6 +79,6 @@ const ASCII = {
     4: `░█████╔╝`,
     5: `░╚════╝░`,
   },
-};
+} as const;
 
 export { ASCII };
