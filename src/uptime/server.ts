@@ -1,7 +1,7 @@
 import process from "process";
-import { hey } from "../terminal/hey.js";
-import { DateComponent } from "../typings/declarations.js";
+import { hay } from "../terminal/hay.js";
 import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConversion.js";
+import { DateComponent } from "../typings/declarations.js";
 
 const deriveServerUptime = (): string => {
   let processUptime: DateComponent = secondsToMinutes(process.uptime());
@@ -19,7 +19,7 @@ const deriveServerUptime = (): string => {
 };
 
 const printServerUptime = (): void => {
-  hey(`Uptime: ${deriveServerUptime()}`);
+  hay(`Uptime: ${deriveServerUptime()}`);
 };
 
 export { printServerUptime };

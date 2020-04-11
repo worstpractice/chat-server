@@ -1,7 +1,7 @@
 import os from "os";
-import { hey } from "../terminal/hey.js";
-import { DateComponent } from "../typings/declarations.js";
+import { hay } from "../terminal/hay.js";
 import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConversion.js";
+import { DateComponent } from "../typings/declarations.js";
 
 const deriveSystemUptime = (): string => {
   const systemUptime: DateComponent = secondsToMinutes(os.uptime());
@@ -19,7 +19,7 @@ const deriveSystemUptime = (): string => {
 };
 
 const printSystemUptime = (): void => {
-  hey(`System uptime: ${deriveSystemUptime()}`);
+  hay(`System uptime: ${deriveSystemUptime()}`);
 };
 
 export { printSystemUptime };
