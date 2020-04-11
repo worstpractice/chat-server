@@ -1,9 +1,12 @@
+import chalk from "chalk";
 import { log } from "console";
 
-/** Convenience function for general console-logging, as indicated by the "[*]" symbol. */
+const asterisk = `${chalk.blueBright("*")}`;
+
+/** Convenience function for general console-logging, as indicated by the blue "[*]" symbol. */
 function say(...args: any[]): void {
   for (let text of args) {
-    log(` [*] ${text.toString()}\n`);
+    log(` [${asterisk}] ${text.toString()}\n`);
   }
 }
 

@@ -1,9 +1,12 @@
+import chalk from "chalk";
 import { log } from "console";
 
-/** Convenience function for console-logging successes, as indicated by the "[+]" symbol. */
+const plus = `${chalk.greenBright("+")}`;
+
+/** Convenience function for console-logging successes, as indicated by the green "[+]" symbol. */
 function yay(...args: any[]): void {
   for (let text of args) {
-    log(` [+] ${text.toString()}\n`);
+    log(` [${plus}] ${text.toString()}\n`);
   }
 }
 
