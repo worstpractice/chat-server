@@ -1,7 +1,7 @@
 import os from "os";
 import { hey } from "../terminal/hey.js";
 import { DateComponent } from "../typings/declarations.js";
-import { hoursToDays, minutesToHours, secondsToMinutes } from "../utils/timeConversion.js";
+import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConversion.js";
 
 const deriveSystemUptime = (): string => {
   const systemUptime: DateComponent = secondsToMinutes(os.uptime());

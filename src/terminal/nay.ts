@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { error } from "console";
-import { hourMinuteSecond } from "../utils/timestamp.js";
+import { hourMinuteSecond } from "../time/timestamp.js";
 
 const exclamationPoint = `${chalk.redBright("!")}`;
 

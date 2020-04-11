@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { log } from "console";
-import { hourMinuteSecond } from "../utils/timestamp.js";
+import { hourMinuteSecond } from "../time/timestamp.js";
 
 const asterisk = `${chalk.blueBright("*")}`;
 

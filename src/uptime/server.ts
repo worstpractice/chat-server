@@ -1,7 +1,7 @@
 import process from "process";
 import { hey } from "../terminal/hey.js";
 import { DateComponent } from "../typings/declarations.js";
-import { hoursToDays, minutesToHours, secondsToMinutes } from "../utils/timeConversion.js";
+import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConversion.js";
 
 const deriveServerUptime = (): string => {
   let processUptime: DateComponent = secondsToMinutes(process.uptime());
