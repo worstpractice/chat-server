@@ -1,5 +1,5 @@
 import WebSocket from "ws";
-import { yay } from "../../../utils/yay.js";
+import { yay } from "../../../terminal/yay.js";
 
 function handleClientOpen(this: WebSocket): void {
   yay(`Client opened!`);

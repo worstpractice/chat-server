@@ -1,4 +1,5 @@
-import { clear, log } from "console";
+import { log } from "console";
+import { clearScreen } from "./clearScreen.js";
 import { ASCII } from "./font.js";
 
 const alignment = `                                            `;
@@ -26,7 +27,7 @@ const banner = `
 ${selectRandomSubtitle()}\n`;
 
 const displayBanner = (): void => {
-  clear();
+  clearScreen();
   log(banner);
 };
 
