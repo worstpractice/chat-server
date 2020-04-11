@@ -2,6 +2,7 @@ import http from "http";
 import os from "os";
 import process from "process";
 import WebSocket from "ws";
+import { displayBanner } from "./banner/display.js";
 import { handleHTTPClose } from "./listeners/http/close.js";
 import { handleHTTPConnection } from "./listeners/http/connection.js";
 import { handleHTTPError } from "./listeners/http/error.js";
@@ -15,12 +16,15 @@ import { handleWebSocketError } from "./listeners/websocket/error.js";
 import { handleWebSocketHeaders } from "./listeners/websocket/headers.js";
 import { handleWebSocketListening } from "./listeners/websocket/listening.js";
 import { say } from "./terminal/say.js";
-import { displayBanner } from "./banner/display.js";
+import { printServerUptime } from "./uptime/server.js";
+import { printSystemUptime } from "./uptime/system.js";
+import { everyFiveMinutes } from "./utils/repeat.js";
 
 const PRIORITY = os.constants.priority.PRIORITY_HIGHEST;
 const PORT = 443;
 
 displayBanner();
+printSystemUptime();
 
 // Node /////////////////////////////////////////////////
 say(`Initializing process...`);
@@ -49,6 +53,7 @@ wss.on(`headers`, handleWebSocketHeaders.bind(wss));
 
 server.listen(PORT, () => {
   say(`Open for business on port ${PORT}...`);
+  everyFiveMinutes(printServerUptime);
 });
 
 export { server, wss };
