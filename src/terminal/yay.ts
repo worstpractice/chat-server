@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { log } from "console";
-import { hourMinuteSecond } from "./timestamp.js";
+import { hourMinuteSecond } from "../utils/timestamp.js";
 
 const plus = `${chalk.greenBright("+")}`;
 
