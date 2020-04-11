@@ -7,13 +7,16 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start" : "npx tsc && node --use-strict ./dist/app.js"
+    "start": "npx tsc && node --use-strict ./dist/app.js"
   },
   "dependencies": {
-    "@types/node": "^13.9.5",
+    "chalk": "^4.0.0",
+    "ws": "^7.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^13.11.1",
     "@types/ws": "^7.2.3",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3",
-    "ws": "^7.2.3"
+    "typescript": "^3.8.3"
   }
 }
