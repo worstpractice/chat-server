@@ -3,10 +3,10 @@ import { broadcast } from "../../../messages/broadcast.js";
 import { deserialize } from "../../../messages/deserialize.js";
 import { acceptUsername, rejectUsername } from "../../../messages/response.js";
 import { serialize } from "../../../messages/serialize.js";
-import { isInboxChatMessage } from "../../../predicates/inbox/ChatMessage.js";
-import { isInboxUsername } from "../../../predicates/inbox/Username.js";
-import { nay } from "../../../utils/nay.js";
-import { yay } from "../../../utils/yay.js";
+import { isInboxChatMessage } from "../../../predicates/inbox/chatMessage.js";
+import { isInboxUsername } from "../../../predicates/inbox/username.js";
+import { nay } from "../../../terminal/nay.js";
+import { yay } from "../../../terminal/yay.js";
 import { hasValidUsername } from "./metadata/hasValidUsername.js";
 import { takenUsernames } from "./metadata/takenUsernames.js";
 
@@ -20,6 +20,7 @@ function handleClientMessage(this: WebSocket, data: WebSocket.Data): void {
       hasValidUsername.delete(this);
       return this.send(serialize(rejectUsername));
     }
+    
     yay(`Username ${message.username} accepted!`);
     hasValidUsername.add(this);
     takenUsernames.add(message.username);

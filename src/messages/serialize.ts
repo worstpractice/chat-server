@@ -1,4 +1,4 @@
-import { nay } from "../utils/nay.js";
+import { nay } from "../terminal/nay.js";
 import { rethrow } from "../utils/rethrow.js";
 
 const serialize = (message: Outbox.Message): string | never => {

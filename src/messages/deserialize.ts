@@ -1,5 +1,5 @@
 import WebSocket from "ws";
-import { nay } from "../utils/nay.js";
+import { nay } from "../terminal/nay.js";
 import { rethrow } from "../utils/rethrow.js";
 
 const deserialize = (data: WebSocket.Data): Inbox.Message | never => {

@@ -1,6 +1,6 @@
 import WebSocket from "ws";
 import { wss } from "../../../app.js";
-import { say } from "../../../utils/say.js";
+import { say } from "../../../terminal/say.js";
 
 function handleClientClose(this: WebSocket, code: number, reason: string): void {
   say(`Client disconnected!`);

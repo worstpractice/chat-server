@@ -1,8 +1,8 @@
 import http from "http";
 import { Socket } from "net";
-import { nay } from "../../utils/nay.js";
-import { say } from "../../utils/say.js"
-import { yay } from "../../utils/yay.js";
+import { nay } from "../../terminal/nay.js";
+import { say } from "../../terminal/say.js";
+import { yay } from "../../terminal/yay.js";
 
 function handleHTTPConnection(this: http.Server, _socket: Socket): void {
   yay(`HTTP client connected!`);

@@ -1,7 +1,7 @@
 import { randomBytes } from "crypto";
 import { wss } from "../app.js";
-import { say } from "../utils/say.js";
-import { yay } from "../utils/yay.js";
+import { say } from "../terminal/say.js";
+import { yay } from "../terminal/yay.js";
 import { serialize } from "./serialize.js";
 import { stamp } from "./stamp.js";
 

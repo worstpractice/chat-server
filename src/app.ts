@@ -14,8 +14,8 @@ import { handleWebSocketConnection } from "./listeners/websocket/connection.js";
 import { handleWebSocketError } from "./listeners/websocket/error.js";
 import { handleWebSocketHeaders } from "./listeners/websocket/headers.js";
 import { handleWebSocketListening } from "./listeners/websocket/listening.js";
+import { say } from "./terminal/say.js";
 import { displayBanner } from "./utils/banner.js";
-import { say } from "./utils/say.js";
 
 const PRIORITY = os.constants.priority.PRIORITY_HIGHEST;
 const PORT = 443;

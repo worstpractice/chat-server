@@ -1,5 +1,5 @@
 import process from "process";
-import { nay } from "../../utils/nay.js";
+import { nay } from "../../terminal/nay.js";
 
 const handleSignal: NodeJS.SignalsListener = (signal: NodeJS.Signals): void => {
   nay(`${signal} recieved! Exiting gracefully...`);

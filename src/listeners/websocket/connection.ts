@@ -1,7 +1,7 @@
 import WebSocket from "ws";
 import { wss } from "../../app.js";
-import { say } from "../../utils/say.js";
-import { yay } from "../../utils/yay.js";
+import { say } from "../../terminal/say.js";
+import { yay } from "../../terminal/yay.js";
 import { handleClientClose } from "./client/close.js";
 import { handleClientError } from "./client/error.js";
 import { handleClientMessage } from "./client/message.js";
