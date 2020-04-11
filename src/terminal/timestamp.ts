@@ -3,19 +3,19 @@ const prefixWithZero = (unit: number): string => {
 };
 
 const dayMonthYear = (): string => {
-  const today = new Date();
+  const now = new Date();
 
-  let dd: number | string = today.getDate();
+  let dd: number | string = now.getDate();
   if (dd < 10) {
     dd = prefixWithZero(dd);
   }
 
-  let mm: number | string = today.getMonth() + 1;
+  let mm: number | string = now.getMonth() + 1;
   if (mm < 10) {
     mm = prefixWithZero(mm);
   }
 
-  const yyyy: number | string = today.getFullYear();
+  const yyyy: number | string = now.getFullYear();
 
   return `${dd}/${mm}/${yyyy}`;
 };
