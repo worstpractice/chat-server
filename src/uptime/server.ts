@@ -4,7 +4,7 @@ import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConve
 import { PieceOfDate } from "../typings/declarations.js";
 
 const deriveServerUptime = (): string => {
-  let processUptime: PieceOfDate = secondsToMinutes(process.uptime());
+  const processUptime: PieceOfDate = secondsToMinutes(process.uptime());
   let output: string = `${processUptime} minutes`;
 
   if (hoursToDays(processUptime) >= 1) {
