@@ -1,10 +1,10 @@
 import os from "os";
 import { hay } from "../terminal/hay.js";
 import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConversion.js";
-import { DateComponent } from "../typings/declarations.js";
+import { PieceOfDate } from "../typings/declarations.js";
 
 const deriveSystemUptime = (): string => {
-  const systemUptime: DateComponent = secondsToMinutes(os.uptime());
+  const systemUptime: PieceOfDate = secondsToMinutes(os.uptime());
   let output: string = `${systemUptime} minutes`;
 
   if (hoursToDays(systemUptime) >= 1) {

@@ -1,4 +1,4 @@
-import { DateComponent } from "../typings/declarations.js";
+import { PieceOfDate } from "../typings/declarations.js";
 
 const prefixWithZero = (unit: number): string => {
   return `0${unit}`;
@@ -7,17 +7,17 @@ const prefixWithZero = (unit: number): string => {
 const dayMonthYear = (): string => {
   const now = new Date();
 
-  let dd: DateComponent = now.getDate();
+  let dd: PieceOfDate = now.getDate();
   if (dd < 10) {
     dd = prefixWithZero(dd);
   }
 
-  let mm: DateComponent = now.getMonth() + 1;
+  let mm: PieceOfDate = now.getMonth() + 1;
   if (mm < 10) {
     mm = prefixWithZero(mm);
   }
 
-  const yyyy: DateComponent = now.getFullYear();
+  const yyyy: PieceOfDate = now.getFullYear();
 
   return `${dd}/${mm}/${yyyy}`;
 };
@@ -25,17 +25,17 @@ const dayMonthYear = (): string => {
 const hourMinuteSecond = (): string => {
   const now = new Date();
 
-  let s: DateComponent = now.getSeconds();
+  let s: PieceOfDate = now.getSeconds();
   if (s < 10) {
     s = prefixWithZero(s);
   }
 
-  let m: DateComponent = now.getMinutes();
+  let m: PieceOfDate = now.getMinutes();
   if (m < 10) {
     m = prefixWithZero(m);
   }
 
-  let h: DateComponent = now.getHours();
+  let h: PieceOfDate = now.getHours();
   if (h < 10) {
     h = prefixWithZero(h);
   }

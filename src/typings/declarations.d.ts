@@ -2,4 +2,4 @@ export interface Callback {
   (...args: any[]): void;
 }
 
-export type DateComponent = number | string;
+export type PieceOfDate = number | string;

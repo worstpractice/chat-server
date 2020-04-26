@@ -1,10 +1,10 @@
 import process from "process";
 import { hay } from "../terminal/hay.js";
 import { hoursToDays, minutesToHours, secondsToMinutes } from "../time/timeConversion.js";
-import { DateComponent } from "../typings/declarations.js";
+import { PieceOfDate } from "../typings/declarations.js";
 
 const deriveServerUptime = (): string => {
-  let processUptime: DateComponent = secondsToMinutes(process.uptime());
+  let processUptime: PieceOfDate = secondsToMinutes(process.uptime());
   let output: string = `${processUptime} minutes`;
 
   if (hoursToDays(processUptime) >= 1) {
